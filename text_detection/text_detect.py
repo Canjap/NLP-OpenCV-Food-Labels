@@ -1,13 +1,9 @@
 import os 
 import numpy as np 
 import PIL as Image 
-#from pytesseract import pytesseract
 import keras_ocr
 import cv2
-import imutils
-from imutils.object_detection import non_max_suppression
-from imutils.video import VideoStream
-from imutils.video import FPS
+import matplotlib.pyplot as plt
 
 images_folder = "images"
 def decode_predictions(scores, geometry):
