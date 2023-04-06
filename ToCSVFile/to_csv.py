@@ -4,10 +4,12 @@ import sys
 sys.path.append("C:\\Users\\sanja\\OneDrive\\Documents\\GitHub\\NLP-OpenCV-Food-Labels\\text_detection") # adds text_detection folder to list of modules/libs Python uses
 import keras_text
 
-words_list = keras_text.pipelineProcessor()
-
+words_list = ["apple", "cinammon", "cereal", "Nutrition"]#keras_text.pipelineProcessor()
+nutrion_label = " ".join(words_list).split("Nutrition")
 data = {
-    "Words" : words_list,
+    "Label" : [words_list],
+    #"Nutrition Label" : 
+
     }
 df = pd.DataFrame(data)
 
