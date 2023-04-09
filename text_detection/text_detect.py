@@ -4,6 +4,7 @@ import PIL as Image
 import keras_ocr
 import cv2
 import matplotlib.pyplot as plt
+from file_manage import deleteImages
 
 images_folder = "images"
 def decode_predictions(scores, geometry):
@@ -55,16 +56,9 @@ def decode_predictions(scores, geometry):
 	# return a tuple of the bounding boxes and associated confidences
 	return (rects, confidences)
 
-def files():
-	try:
-		os.remove(images_folder)
-	except OSError:
-		pass
-	if not os.path.exists(images_folder):
-		os.makedirs(images_folder)
-
 camera = cv2.VideoCapture(0)
-
+camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 def Video(camera):
 	if not camera.isOpened():
 		print('cannot open cam')
@@ -80,7 +74,7 @@ def Video(camera):
 		cv2.imshow('frame', gray) #displays the frame. bc its a while loop, this is continuous --> a video
 		img_name = str(index) + ".png"
 		img_save_to_path = fr'C:\Users\sanja\OneDrive\Documents\GitHub\NLP-OpenCV-Food-Labels\images\{img_name}'
-		if index % 100 == 0:
+		if index % 200 == 0:
 			print('getting this frame...' + img_save_to_path)
 			cv2.imwrite(img_save_to_path, frame) #saves the frame to the specified file 
 		index+= 1
@@ -89,7 +83,5 @@ def Video(camera):
 			break
 	camera.release()
 	cv2.destroyAllWindows()
-
-pipeline = keras_ocr.pipeline.Pipeline()
-pipeline.recognize()
+deleteImages()
 Video(camera)
