@@ -1,6 +1,5 @@
 import os 
 import numpy as np 
-import PIL as Image 
 import keras_ocr
 import cv2
 import matplotlib.pyplot as plt
