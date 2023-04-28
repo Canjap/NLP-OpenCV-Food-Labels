@@ -30,7 +30,8 @@ def Video(camera):
 			cv2.imwrite(img_save_to_path, frame) #saves the frame to the specified file 
 		index+= 1
 		
-		if cv2.waitKey(1) == ord('q'): #if q is pressed on keyboard, the window closes. .waitKey() returns 32 bit int, w/ last 8 being the key. When AND operator is done to it, the last byte is left (last 8 ints). if this byte's ASCII key == q, then exit 
+		if cv2.waitKey(1) == ord('q'): #if q is pressed on keyboard, the window closes. .waitKey() returns 32 bit int, w/ last 8 being the key. 
+			#When AND operator is done to it, the last byte is left (last 8 ints). if this byte's ASCII key == q, then exit 
 			break
 	camera.release()
 	cv2.destroyAllWindows()
