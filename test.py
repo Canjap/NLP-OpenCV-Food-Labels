@@ -12,18 +12,8 @@ divs = soup.find(id = "FoodLabelHldr")
 to_df = divs.text
 to_df = to_df.splitlines()
 to_df = [elem for elem in to_df if elem.strip()]
-nono_words = ['Nutrition Facts', 'Amount Per Serving', '% Daily Value*', 'The % Daily Value (DV) tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice.']
-for x in to_df:
-    if x in nono_words:
-        to_df.remove(x)
-to_df[18] = to_df[18].strip()
-to_df[-1] = to_df[-1].strip()
-to_df.remove(to_df[0])
-to_df.remove(to_df[0])
-to_df.remove(to_df[0])
-to_df.remove(to_df[-1])
-to_df.remove(to_df[-1])
-#print(to_df)
+print(to_df)
+print(to_df)
 for x in to_df:
     if x != to_df[-1]:
         if x.endswith('%'):
