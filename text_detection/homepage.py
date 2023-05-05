@@ -13,11 +13,9 @@ from find_return_nutrition_site import toCSVs
 import file_manage
 
 capture = False
-grey=0
-neg=0
 label = False
-switch=1
-rec=0
+off_on = 0
+rec = 0
 
 def gen(num):
     for i in range(num):
@@ -79,7 +77,7 @@ def video_feed():
 
 @app.route('/requests',methods=['POST','GET'])
 def tasks():
-    global switch,camera
+    global off_on,camera
     if request.method == 'POST':
         if request.form.get('click') == 'Capture':
             global capture
@@ -89,14 +87,14 @@ def tasks():
             label=True
         elif  request.form.get('stop') == 'Stop/Start':
             
-            if(switch==1):
-                switch=0
+            if(off_on==1):
+                off_on=0
                 camera.release()
                 cv2.destroyAllWindows()
                 
             else:
                 camera = cv2.VideoCapture(0)
-                switch=1
+                off_on=1
                           
                  
     elif request.method=='GET':
